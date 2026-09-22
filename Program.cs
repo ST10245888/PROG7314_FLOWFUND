@@ -4,12 +4,19 @@ using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using FlowFund.Api.Auth;
+using FlowFund.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter()));
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<FlowFund.Api.Services.CurrentUserService>();
+builder.Services.AddScoped<FlowFund.Api.Services.PayoutRotationCalculatorService>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -44,14 +51,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
 
 //Turn on Authentication & Authorization in the request pipeline
-app.UseAuthentication(); 
+app.UseAuthentication();
 
 app.UseAuthorization();
 

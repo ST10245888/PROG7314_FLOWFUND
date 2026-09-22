@@ -16,4 +16,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="FlowFund.Api.Tests\**" />
+    <None Remove="FlowFund.Api.Tests\**" />
+    <Content Remove="FlowFund.Api.Tests\**" />
+  </ItemGroup>
+
 </Project>

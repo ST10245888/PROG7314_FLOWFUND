@@ -365,3 +365,5 @@ FodyWeavers.xsd
 appsettings.json
 appsettings.*.json
 !appsettings.Example.json
+.gradle/
+local.properties
