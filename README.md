@@ -138,10 +138,6 @@ The application also uses Firebase Authentication and JWT-based authorisation to
 
 HOW TO RUN THE APP:
 
-# FlowFund
-
-FlowFund is an Android app (Kotlin, Jetpack Compose, Room) backed by an ASP.NET Core Web API (.NET 10) and Azure SQL. This file explains how to run the API and the app.
-
 ## Prerequisites
 
 | Tool | Notes |
